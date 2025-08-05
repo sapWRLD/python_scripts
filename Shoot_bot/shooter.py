@@ -13,7 +13,7 @@ def shoot():
     while True:
         x, y = pag.position()
         if pag.pixel(x,y) == target_color:
-            pag.click()
+            pag.click( )
             print("Target color found! Shooting...")
             time.sleep(0.01)   # Faster clicking
 

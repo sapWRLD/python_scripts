@@ -11,7 +11,7 @@ def get_color():
     last_rgb = None
     while True:     
         if kb.is_pressed('space'):
-            x, y = pag.position()
+            x, y = pag.position()    
             rgb = pag.pixel(x, y)
             print(f"Captured color: {rgb} with HEX {rgb_to_hex(rgb)} at position ({x}, {y})") 
             last_rgb = rgb
