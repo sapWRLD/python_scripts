@@ -3,17 +3,22 @@ import pyautogui as pag
 import time
 import keyboard as kb
 
-def shoot():
+def colors_are_close(c1, c2, tolerance=15):
+     return sum(abs(a - b) for a, b in zip(c1, c2)) <= tolerance
+
+def shoot(): 
     print("Press ESC to exit.")
-    get_target_color, terget_pos = find.get_target_color()  # Get the target color from the target_finder module
+    target_color = find.get_target_color()  # Get the target color from the target_finder module
+
     while True:
-        corrupted_color = pag.pixel(*terget_pos)
-        if corrupted_color == get_target_color:
+        x, y = pag.position()
+        if pag.pixel(x,y) == target_color:
             pag.click()
             print("Target color found! Shooting...")
-            time.sleep(0.1)     
+            time.sleep(0.01)   # Faster clicking
+
         if kb.is_pressed('esc'): 
             print("Exiting...")
             break
 if __name__ == "__main__":
-        shoot()  
+        shoot()
